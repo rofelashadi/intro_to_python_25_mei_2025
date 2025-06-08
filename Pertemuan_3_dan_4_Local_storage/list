@@ -1,0 +1,26 @@
+#inisialisasi
+#teknik program menyediakan memori yang akan dipakai
+
+makanan = ["nasi", "sayur", "ayam"]
+
+#Read (R)
+print(f"List Mkanan : {makanan}")
+
+#Read Spesifik
+print(f"Index of 1 : {makanan[1]}")
+print(f"Index of -1 : {makanan[-1]}")
+
+#Update (U)
+makanan [1] = "daging"
+print(f"List Manakan setelah diupdate : {makanan}")
+
+# tambah data append (a)
+makanan.append("sayur")
+print(f"List Manakan setelah diupdate : {makanan}")
+
+makanan.remove("nasi")
+print(f"List Manakan setelah diupdate : {makanan}")
+
+buah = ["semangka", "melon", "nanas"]
+makanan += buah
+print(f"List Manakan setelah diupdate : {makanan}")

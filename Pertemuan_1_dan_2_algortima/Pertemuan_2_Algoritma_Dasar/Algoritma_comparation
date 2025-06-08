@@ -1,0 +1,26 @@
+x = 3
+y = 3
+
+#besar dari
+hasil = (x>y)
+print(f"Apakah nilai {x} besar dari (>) {y} adalah {hasil}")
+hasil = (x>=y)
+print(f"Apakah nilai {x} besar dari (>) {y} adalah {hasil}")
+
+#kecil dari
+hasil = (x<y)
+print(f"Apakah nilai {x} kecil dari (>) {y} adalah {hasil}")
+
+kondisi = True
+hasil = kondisi != False
+print(f"Apa yang akan terjadi dari kondisi diiata : {hasil}")
+
+x = "1"
+y = 1
+hasil = x == y
+print(f"Hasil dari {x} apakah sama dengan {y} adalah {hasil}")
+
+x = "1"
+y = 1
+hasil = x == str(y)
+print(f"Hasil dari {x} apakah sama dengan {y} adalah {hasil}")
