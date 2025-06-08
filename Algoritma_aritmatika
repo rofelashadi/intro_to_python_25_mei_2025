@@ -1,0 +1,14 @@
+x = 3
+y = 2
+
+#penjumlahan
+hasil = x + y
+print(f"hasil penjumlahan dari {x} + {y} = {hasil}")
+
+#pembagian
+hasil = x / y
+print(f"hasil pembagia dari {x}  / {y} = {hasil}")
+
+#modulus
+hasil = x % y
+print(f"hasil modulus dari {x} % {y} = {hasil}")
