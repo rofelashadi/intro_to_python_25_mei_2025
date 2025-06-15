@@ -57,7 +57,7 @@ def merge_short(data):
                     j += 1
                k += 1
                
-          while 1 < len(kiri):
+          while i < len(kiri):
                data[k] = kiri[i]
                i += 1
                k += 1
@@ -95,4 +95,4 @@ def main():
 
 
 if __name__ == "__main__":
-   main()
+    main()
