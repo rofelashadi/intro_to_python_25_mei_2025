@@ -61,4 +61,4 @@ match select:
     case"2":
         print("ENd")
     case _ :
-        print("Invalid Input Type")
+        print("Invalid Input Type1")

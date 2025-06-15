@@ -1,0 +1,72 @@
+# Data referensi perangkat dan lisensi
+meraki_devices = [
+    {"max_user": 50, "model": "MX64 / MX68", "harga": 8_000_000, "lisensi": 2_000_000},
+    {"max_user": 100, "model": "MX84", "harga": 15_000_000, "lisensi": 4_000_000},
+    {"max_user": 250, "model": "MX100", "harga": 30_000_000, "lisensi": 6_000_000},
+    {"max_user": 500, "model": "MX250", "harga": 60_000_000, "lisensi": 10_000_000},
+    {"max_user": float('inf'), "model": "MX450", "harga": 100_000_000, "lisensi": 15_000_000},
+]
+
+catalyst_devices = [
+    {"max_user": 50, "model": "C8300-1N1S-4T2X", "harga": 30_000_000, "lisensi": 5_000_000},
+    {"max_user": 100, "model": "C8300-2N2S-6T", "harga": 55_000_000, "lisensi": 8_000_000},
+    {"max_user": 250, "model": "C8500-12X", "harga": 90_000_000, "lisensi": 12_000_000},
+    {"max_user": 500, "model": "C8500-20X6C", "harga": 150_000_000, "lisensi": 20_000_000},
+    {"max_user": float('inf'), "model": "C8500-12X4QC", "harga": 200_000_000, "lisensi": 25_000_000},
+]
+
+def get_device(user_count, sdwan_type):
+    devices = meraki_devices if sdwan_type == "meraki" else catalyst_devices
+    for device in devices:
+        if user_count <= device["max_user"]:
+            return device
+    return None
+
+def format_rupiah(amount):
+    return f"Rp {amount:,.0f}".replace(",", ".")
+
+def main():
+    print("=== Kalkulator SD-WAN Meraki / Catalyst ===")
+    sdwan_type = input("Pilih jenis SD-WAN (meraki / catalyst): ").strip().lower()
+
+    if sdwan_type not in ["meraki", "catalyst"]:
+        print("Jenis SD-WAN tidak dikenali. Gunakan 'meraki' atau 'catalyst'.")
+        return
+
+    total_sites = int(input("Masukkan jumlah site: "))
+    site_data = []
+
+    for i in range(total_sites):
+        print(f"\n--- Site {i+1} ---")
+        name = input("Nama site         : ")
+        user = int(input("Jumlah user       : "))
+        role = input("Tipe site (hub/spoke): ").lower()
+        device = get_device(user, sdwan_type)
+
+        total_site_cost = device["harga"] + device["lisensi"]
+        site_data.append({
+            "nama": name,
+            "user": user,
+            "role": "Hub" if role == "hub" else "Spoke",
+            "model": device["model"],
+            "harga": device["harga"],
+            "lisensi": device["lisensi"],
+            "total": total_site_cost
+        })
+
+    print(f"\n=== Rekomendasi Perangkat SD-WAN ({sdwan_type.capitalize()}) + Lisensi ===")
+    grand_total = 0
+    for site in site_data:
+        print(f"\nSite: {site['nama']}")
+        print(f"  Role             : {site['role']}")
+        print(f"  Jumlah user      : {site['user']}")
+        print(f"  Rekomendasi      : {site['model']}")
+        print(f"  Harga Perangkat  : {format_rupiah(site['harga'])}")
+        print(f"  Lisensi Tahunan  : {format_rupiah(site['lisensi'])}")
+        print(f"  Total per Site   : {format_rupiah(site['total'])}")
+        grand_total += site['total']
+
+    print(f"\nTOTAL ESTIMASI BIAYA (Semua Site + Lisensi Tahun 1): {format_rupiah(grand_total)}")
+
+if __name__ == "__main__":
+    main()

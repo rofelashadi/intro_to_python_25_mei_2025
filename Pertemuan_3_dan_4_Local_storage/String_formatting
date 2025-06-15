@@ -9,3 +9,5 @@ print("=======Posisional Arguent========")
 print("\t\t\t{0}nKepada, \nHRD Manager {1}\n{2}".format(nama_pt, alamat, waktu_dibuat))
 print("======Keyword Agreement======")
 print(f"\t\t\t{waktu_dibuat}\nKepada, \nHRD Manager {nama_pt}\n{alamat}")
+ # \t ini untuk menambahkan tab sama dengan 4 kali spasi
+ # \n ini untuk new line atau enter

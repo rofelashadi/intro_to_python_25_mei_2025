@@ -12,3 +12,8 @@ print(f"hasil pembagia dari {x}  / {y} = {hasil}")
 #modulus
 hasil = x % y
 print(f"hasil modulus dari {x} % {y} = {hasil}")
+
+
+x = x + 1
+x += 1 #increment method
+x -= 1 #decrement method
